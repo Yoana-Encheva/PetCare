@@ -11,7 +11,7 @@ import { Post } from './types/post';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getPosts(limit?: number) {
+  getPosts() {
     const { apiUrl } = environment;
 
     return this.http.get<Post[]>(`${apiUrl}/posts`);
