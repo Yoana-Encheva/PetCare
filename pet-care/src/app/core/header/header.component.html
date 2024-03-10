@@ -9,22 +9,28 @@
 
   <span>Pet Care</span>
 
-  <button
+  <a
     mat-icon-button
     class="icon-button"
     aria-label="icon-button with home icon"
+    routerLink="/home"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
   >
     <mat-icon>home</mat-icon>
-  </button>
+  </a>
 
-  <button
+  <a
     mat-icon-button
     class="icon-button"
     aria-label="icon-button with dashboard icon"
+    routerLink="/blog"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
   >
     <mat-icon>dashboard</mat-icon>
     <span class="label">Dashboard</span>
-  </button>
+  </a>
 
   <span class="spacer"></span>
 

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PostsListComponent } from './posts-list/posts-list.component';
     HomeComponent,
     MainComponent,
     PostsListComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,
