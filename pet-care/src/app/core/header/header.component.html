@@ -42,6 +42,7 @@
     <mat-icon>favorite</mat-icon>
   </button>
   <button
+    *ngIf="!isLoggedIn"
     mat-icon-button
     class="icon-button"
     aria-label="icon-button with login icon"
@@ -50,6 +51,7 @@
   </button>
 
   <button
+    *ngIf="isLoggedIn"
     mat-icon-button
     class="icon-button"
     aria-label="icon-button with logout icon"
