@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { BlogComponent } from './blog/blog.component';
+import { PostItemComponent } from './posts-list/post-item/post-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BlogComponent } from './blog/blog.component';
     MainComponent,
     PostsListComponent,
     BlogComponent,
+    PostItemComponent,
   ],
   imports: [
     AppRoutingModule,
