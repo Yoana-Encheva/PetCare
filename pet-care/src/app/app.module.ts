@@ -18,7 +18,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [AppComponent, HomeComponent, MainComponent, NotFoundComponent],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -27,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CoreModule,
     SharedModule,
     UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
