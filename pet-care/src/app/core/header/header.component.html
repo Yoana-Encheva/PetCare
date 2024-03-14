@@ -34,7 +34,9 @@
 
   <span class="spacer"></span>
 
+  <span *ngIf="userName">Hi, {{ userName }}</span>
   <button
+    *ngIf="isLoggedIn"
     mat-icon-button
     class="icon-button favorite-icon"
     aria-label="icon-button with heart icon"
@@ -77,6 +79,7 @@
     routerLink="/logout"
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
+    (click)="logout()"
   >
     <mat-icon>input</mat-icon>
   </a>
