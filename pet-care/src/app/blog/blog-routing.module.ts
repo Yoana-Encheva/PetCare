@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', component: PostListComponent },
       { path: ':postId/details', component: PostDetailsComponent },
-      { path: 'create', component: PostCreateComponent },
+      {
+        path: 'create',
+        component: PostCreateComponent,
+        canActivate: [AuthActivate],
+      },
     ],
   },
 ];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Post } from '../../types/post';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'post-list',
@@ -11,7 +12,11 @@ export class PostListComponent implements OnInit {
   posts: Post[] = [];
   isLoading: boolean = true;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private userService: UserService) {}
+
+  get userId(): string {
+    return this.userService.user?.objectId || '';
+  }
 
   ngOnInit(): void {
     this.api.getPosts().subscribe({
