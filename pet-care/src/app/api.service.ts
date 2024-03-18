@@ -16,4 +16,10 @@ export class ApiService {
 
     return this.http.get<Post[]>(`${apiUrl}/posts`);
   }
+
+  createPost(title: string, content: string) {
+    const { apiUrl } = environment;
+
+    return this.http.post<Post[]>(`${apiUrl}/posts`, { title, content });
+  }
 }
