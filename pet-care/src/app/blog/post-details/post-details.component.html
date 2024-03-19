@@ -4,8 +4,10 @@
     <div class="theme-title">
       <div class="theme-name-wrapper">
         <div class="theme-name">
-          <h2>Angular 10</h2>
-          <p>Date: <time>2020-10-10 12:08:28</time></p>
+          <h2>{{ post.title }}</h2>
+          <p>
+            Date: <time>{{ post.created }}</time>
+          </p>
         </div>
         <div class="subscribers">
           <p>Subscribers: <span>456</span></p>
@@ -21,20 +23,11 @@
       </header>
       <div class="comment-main">
         <div class="userdetails">
-          <img src="./profile.png" alt="avatar" />
+          <img src="../../../assets/profile.png" alt="avatar" />
         </div>
         <div class="post-content">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure facere
-            sint dolorem quam, accusantium ipsa veniam laudantium inventore aut,
-            tenetur quibusdam doloribus. Incidunt odio nostrum facilis ipsum
-            dolorem deserunt illum?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure facere
-            sint dolorem quam, accusantium ipsa veniam laudantium inventore aut,
-            tenetur quibusdam doloribus. Incidunt odio nostrum facilis ipsum
-            dolorem deserunt illum?
+            {{ post.content }}
           </p>
         </div>
       </div>
