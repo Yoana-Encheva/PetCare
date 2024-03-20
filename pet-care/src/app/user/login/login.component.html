@@ -1,53 +1,98 @@
 <div class="container">
-  <form class="login" action="" method="post">
-    <fieldset>
-      <h2>Login Form</h2>
+  <mat-card class="card">
+    <mat-card-content>
+      <h3>Welcome to Care Login</h3>
+      <form>
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <!-- [formControl]="email" -->
 
-      <p class="field field-icon">
-        <label for="email"
-          ><span><i class="fas fa-envelope"></i></span
-        ></label>
-        <input
-          class="input-error"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="john.doe@gmail.com"
-          #inputEmail
-        />
-      </p>
-      <p class="error">Email is required!</p>
-      <!-- <p class="error">
+          <input
+            matInput
+            name="email"
+            placeholder="pat@example.com"
+            required
+            placeholder="john.doe@gmail.com"
+            #inputEmail
+          />
+          <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Password</mat-label>
+          <!-- [(ngModel)]="password" -->
+
+          <input
+            matInput
+            placeholder="Enter your password"
+            value=""
+            name="password"
+            type="password"
+            #inputPassword
+          />
+        </mat-form-field>
+
+        <button (click)="login($event, inputEmail.value, inputPassword.value)">
+          Login
+        </button>
+
+        <p>
+          Don't have an account?
+          <a routerLink="/register">Register</a>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<form class="login" action="" method="post">
+  <fieldset>
+    <h2>Login Form</h2>
+
+    <p class="field field-icon">
+      <label for="email"
+        ><span><i class="fas fa-envelope"></i></span
+      ></label>
+      <input
+        class="input-error"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="john.doe@gmail.com"
+        #inputEmail
+      />
+    </p>
+    <p class="error">Email is required!</p>
+    <!-- <p class="error">
                     Email is not valid!
                 </p> -->
 
-      <p class="field field-icon">
-        <label for="password"
-          ><span><i class="fas fa-lock"></i></span
-        ></label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="******"
-          #inputPassword
-        />
-      </p>
-      <!-- <p class="error">
+    <p class="field field-icon">
+      <label for="password"
+        ><span><i class="fas fa-lock"></i></span
+      ></label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="******"
+        #inputPassword
+      />
+    </p>
+    <!-- <p class="error">
                     Password is required!
                 </p>
                 <p class="error">
                     Password must be at least 4 characters!
                 </p> -->
 
-      <button (click)="login($event, inputEmail.value, inputPassword.value)">
-        Login
-      </button>
+    <button (click)="login($event, inputEmail.value, inputPassword.value)">
+      Login
+    </button>
 
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/register">Register</a>
-      </p>
-    </fieldset>
-  </form>
-</div>
+    <p class="text-center">
+      Have an account?
+      <a routerLink="/register">Register</a>
+    </p>
+  </fieldset>
+</form>

@@ -1,3 +1,8 @@
+.header {
+  background-color: #004658;
+  color: #fff;
+}
+
 .spacer {
   flex: 1 1 auto;
 }

@@ -1,92 +1,81 @@
 <div class="container">
-  <form class="register" action="" method="post">
-    <fieldset>
-      <h2>Registration Form</h2>
+  <mat-card class="card">
+    <mat-card-content>
+      <h2>Create your account</h2>
 
-      <!-- username -->
-      <p class="field field-icon">
-        <label for="username"
-          ><span><i class="fas fa-user"></i></span
-        ></label>
-        <input
-          class="input-error"
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Johny"
-        />
-      </p>
-      <p class="error">Username is required!</p>
+      <form>
+        <!-- username -->
+        <mat-form-field class="w-full" appearance="fill">
+          <input type="text" matInput placeholder="Username" required />
+        </mat-form-field>
 
-      <!-- email -->
-      <p class="field field-icon">
-        <label for="email"
-          ><span><i class="fas fa-envelope"></i></span
-        ></label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="john.doe@gmail.com"
-        />
-      </p>
-      <!-- <p class="error">
+        <!-- email -->
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <!-- [formControl]="email" -->
+
+          <input
+            matInput
+            name="email"
+            placeholder="pat@example.com"
+            required
+            placeholder="john.doe@gmail.com"
+            #inputEmail
+          />
+          <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
+        </mat-form-field>
+
+        <!-- <p class="error">
                     Email is required!
                 </p>
                 <p class="error">
                     Email is not valid!
                 </p> -->
 
-      <!-- telephone -->
-      <p class="field field-icon">
-        <label for="tel"
-          ><span><i class="fas fa-phone"></i></span
-        ></label>
-        <select name="select-tel" id="select-tel" class="tel">
-          <option value="00359">+359</option>
-        </select>
-        <input type="text" name="tel" id="tel" placeholder="885 888 888" />
-      </p>
+        <!-- password -->
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Password</mat-label>
+          <!-- [(ngModel)]="password" -->
 
-      <!-- password -->
-      <p class="field field-icon">
-        <label for="password"
-          ><span><i class="fas fa-lock"></i></span
-        ></label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="******"
-        />
-      </p>
-      <!-- <p class="error">
+          <input
+            matInput
+            placeholder="Enter your password"
+            value=""
+            name="password"
+            type="password"
+            #inputPassword
+          />
+        </mat-form-field>
+        <!-- <p class="error">
                     Password is required!
                 </p>
                 <p class="error">
                     Password must be at least 4 characters!
                 </p> -->
 
-      <!-- rePassword -->
-      <p class="field field-icon">
-        <label for="rePassword"
-          ><span><i class="fas fa-lock"></i></span
-        ></label>
-        <input
-          type="password"
-          name="rePassword"
-          id="rePassword"
-          placeholder="******"
-        />
-      </p>
-      <!-- <p class="error">Repeat Password does not match password!</p> -->
+        <!-- rePassword -->
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Password</mat-label>
+          <!-- [(ngModel)]="password" -->
 
-      <button disabled>Create Account</button>
+          <input
+            matInput
+            placeholder="Enter your password"
+            value=""
+            name="rePassword"
+            type="password"
+            #inputRePassword
+          />
+        </mat-form-field>
+        <!-- <p class="error">Repeat Password does not match password!</p> -->
 
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/login">Log In</a>
-      </p>
-    </fieldset>
-  </form>
+        <button disabled>Create Account</button>
+
+        <p>
+          Have an account?
+          <a routerLink="/login">Log In</a>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
