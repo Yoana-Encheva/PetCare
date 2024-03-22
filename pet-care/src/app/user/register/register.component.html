@@ -3,16 +3,30 @@
     <mat-card-content>
       <h2>Create your account</h2>
 
-      <form>
-        <!-- username -->
+      <form [formGroup]="form" (ngSubmit)="register()">
         <mat-form-field class="w-full" appearance="fill">
-          <input type="text" matInput placeholder="Username" required />
+          <mat-label>Enter your username</mat-label>
+
+          <input
+            type="text"
+            name="name"
+            matInput
+            placeholder="Username"
+            required
+            formControlName="name"
+          />
+
+          <mat-error *ngIf="form.get('name')?.errors?.['required']">
+            Username is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('name')?.errors?.['minlength']">
+            Username should be at least 5 characters long!
+          </mat-error>
         </mat-form-field>
 
-        <!-- email -->
         <mat-form-field class="w-full" appearance="fill">
           <mat-label>Enter your email</mat-label>
-          <!-- [formControl]="email" -->
 
           <input
             matInput
@@ -20,56 +34,50 @@
             placeholder="pat@example.com"
             required
             placeholder="john.doe@gmail.com"
+            formControlName="email"
             #inputEmail
           />
-          <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
+          <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('email')?.errors?.['emailValidator']">
+            Email is invalid!
+          </mat-error>
         </mat-form-field>
 
-        <!-- <p class="error">
-                    Email is required!
-                </p>
-                <p class="error">
-                    Email is not valid!
-                </p> -->
+        <ng-container formGroupName="passGroup">
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Password</mat-label>
 
-        <!-- password -->
-        <mat-form-field class="w-full" appearance="fill">
-          <mat-label>Password</mat-label>
-          <!-- [(ngModel)]="password" -->
+            <input
+              matInput
+              placeholder="Enter your password"
+              value=""
+              name="password"
+              type="password"
+              formControlName="password"
+              #inputPassword
+            />
+          </mat-form-field>
 
-          <input
-            matInput
-            placeholder="Enter your password"
-            value=""
-            name="password"
-            type="password"
-            #inputPassword
-          />
-        </mat-form-field>
-        <!-- <p class="error">
-                    Password is required!
-                </p>
-                <p class="error">
-                    Password must be at least 4 characters!
-                </p> -->
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Password</mat-label>
 
-        <!-- rePassword -->
-        <mat-form-field class="w-full" appearance="fill">
-          <mat-label>Password</mat-label>
-          <!-- [(ngModel)]="password" -->
+            <input
+              matInput
+              placeholder="Enter your password"
+              value=""
+              name="rePassword"
+              type="password"
+              formControlName="rePassword"
+              #inputRePassword
+            />
+          </mat-form-field>
+          <!-- <p class="error">Repeat Password does not match password!</p> -->
+        </ng-container>
 
-          <input
-            matInput
-            placeholder="Enter your password"
-            value=""
-            name="rePassword"
-            type="password"
-            #inputRePassword
-          />
-        </mat-form-field>
-        <!-- <p class="error">Repeat Password does not match password!</p> -->
-
-        <button disabled>Create Account</button>
+        <button>Create Account</button>
 
         <p>
           Have an account?
