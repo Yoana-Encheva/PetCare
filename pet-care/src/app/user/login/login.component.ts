@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,6 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   submit() {
-    console.log('user name is ' + this.username);
     this.clear();
   }
 
@@ -26,8 +26,10 @@ export class LoginComponent {
     this.show = true;
   }
 
-  login(event: Event, email: string, password: string) {
-    event.preventDefault();
+  login(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
 
     this.userService.login();
     this.router.navigate(['/home']);
