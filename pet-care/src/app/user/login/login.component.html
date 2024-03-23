@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card class="card">
     <mat-card-content>
-      <h3>Welcome to Pet Care Login</h3>
+      <h2>Welcome to Pet Care Login</h2>
 
       <form #form="ngForm" (ngSubmit)="login(form)">
         <mat-form-field class="w-full" appearance="fill">
@@ -34,7 +34,7 @@
             matInput
             placeholder="Enter your password"
             value=""
-            minlength="5"
+            minlength="6"
             name="password"
             required
             type="password"
@@ -47,16 +47,18 @@
           </mat-error>
 
           <mat-error *ngIf="inputPassword.errors?.['minlength']">
-            Password should be at least 5 characters long!
+            Password should be at least 6 characters long!
           </mat-error>
         </mat-form-field>
 
-        <button>Login</button>
+        <div class="form-actions">
+          <p>
+            Don't have an account?
+            <a routerLink="/register">Register</a>
+          </p>
 
-        <p>
-          Don't have an account?
-          <a routerLink="/register">Register</a>
-        </p>
+          <button mat-fab extended class="button">Login</button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

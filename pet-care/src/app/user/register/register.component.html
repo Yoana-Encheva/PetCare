@@ -31,11 +31,9 @@
           <input
             matInput
             name="email"
-            placeholder="pat@example.com"
-            required
+            type="email"
             placeholder="john.doe@gmail.com"
             formControlName="email"
-            #inputEmail
           />
           <mat-error *ngIf="form.get('email')?.errors?.['required']">
             Email is required!
@@ -53,36 +51,51 @@
             <input
               matInput
               placeholder="Enter your password"
-              value=""
               name="password"
               type="password"
               formControlName="password"
-              #inputPassword
             />
+
+            <mat-error *ngIf="passGroup?.get('password')?.errors?.['required']">
+              Password is required!
+            </mat-error>
+
+            <mat-error
+              *ngIf="passGroup?.get('password')?.errors?.['minlength']"
+            >
+              Password should be at least 6 characters long!
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="w-full" appearance="fill">
-            <mat-label>Password</mat-label>
+            <mat-label>Repeat Password</mat-label>
 
             <input
               matInput
-              placeholder="Enter your password"
-              value=""
+              placeholder="Enter your repeat password"
               name="rePassword"
               type="password"
               formControlName="rePassword"
-              #inputRePassword
             />
           </mat-form-field>
-          <!-- <p class="error">Repeat Password does not match password!</p> -->
+          <mat-error
+            *ngIf="
+              this.passGroup?.get('rePassword')?.touched && hasRePasswordError
+            "
+            class="error"
+          >
+            Passwords does not match!
+          </mat-error>
         </ng-container>
 
-        <button>Create Account</button>
+        <div class="form-actions">
+          <p>
+            Already have an account?
+            <a routerLink="/login">Log In</a>
+          </p>
 
-        <p>
-          Have an account?
-          <a routerLink="/login">Log In</a>
-        </p>
+          <button mat-fab extended class="button">Register</button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

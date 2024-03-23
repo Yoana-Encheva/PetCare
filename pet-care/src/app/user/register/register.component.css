@@ -7,15 +7,29 @@
   width: 100%;
 }
 
-/* errors  */
-
-p.error {
-  text-align: left;
-  border-radius: 0.3em;
-  color: red;
-  padding-top: 0;
+h2 {
+  color: #027b9a;
+  margin-bottom: 24px;
 }
 
-.input-error {
-  border-left-color: red;
+p {
+  margin: 0;
+  color: #027b9a;
+}
+
+.form-actions {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: #027b9a;
+}
+
+.error {
+  margin-left: 15px;
+  margin-top: -22px;
+  font-size: 12px;
 }
