@@ -26,6 +26,6 @@ export class ApiService {
   createPost(title: string, content: string) {
     const { apiUrl } = environment;
 
-    return this.http.post<Post[]>(`${apiUrl}/posts`, { title, content });
+    return this.http.post<Post>(`${apiUrl}/posts`, { title, content });
   }
 }

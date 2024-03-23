@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -7,11 +10,17 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
-  createPost(title: string, content: string) {
+  createPost(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+
+    const { title, content } = form.value;
+
     this.apiService.createPost(title, content).subscribe((data) => {
-      console.log({ data });
+      this.router.navigate(['/blog', data.objectId, 'details']);
     });
   }
 }

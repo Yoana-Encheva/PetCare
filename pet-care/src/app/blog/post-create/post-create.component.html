@@ -1,35 +1,59 @@
-<div class="new-theme-border">
-  <div class="header-background">
-    <span>New Theme</span>
-  </div>
-  <form
-    (submit)="
-      createPost(inputPostName.value, textareaPostText.value);
-      $event.preventDefault()
-    "
-  >
-    <div class="new-theme-title">
-      <label for="postName">Title <span class="red">*</span></label>
-      <input type="text" name="postName" id="postName" #inputPostName />
-      <p class="error">Theme name is required.</p>
-      <p class="error">Theme name must be at least 5 characters long.</p>
-    </div>
-    <div class="new-theme-content">
-      <label for="postText">Post <span class="red">*</span></label>
-      <textarea
-        type="text"
-        name="postText"
-        id="postText"
-        rows="8"
-        class="height"
-        #textareaPostText
-      ></textarea>
-      <p class="error">The field with your post is required.</p>
-      <p class="error">Post must be at least 10 characters long.</p>
-    </div>
-    <div class="new-theme-buttons">
-      <button class="cancel">Cancel</button>
-      <button class="public" type="submit">Post</button>
-    </div>
-  </form>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-content>
+      <h2>Create New Post</h2>
+
+      <form #form="ngForm" (ngSubmit)="createPost(form)">
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter post title</mat-label>
+
+          <input
+            matInput
+            name="title"
+            type="text"
+            minlength="5"
+            required
+            ngModel
+            #inputTitle="ngModel"
+          />
+
+          <mat-error *ngIf="inputTitle.errors?.['required']">
+            Title is required!
+          </mat-error>
+
+          <mat-error *ngIf="inputTitle.errors?.['minlength']">
+            Title should be at least 5 characters long.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter post content</mat-label>
+
+          <input
+            matInput
+            name="content"
+            type="text"
+            minlength="10"
+            required
+            rows="8"
+            ngModel
+            #textareaContent="ngModel"
+          />
+
+          <mat-error *ngIf="textareaContent.errors?.['required']">
+            Content is required!
+          </mat-error>
+
+          <mat-error *ngIf="textareaContent.errors?.['minlength']">
+            Content should be at least 10 characters long.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-fab extended class="button-secondary">Cancel</button>
+          <button mat-fab extended class="button-primary">Create</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
