@@ -36,4 +36,8 @@ export class UserService {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
+
+  updateProfile(userData: User) {
+    localStorage.setItem(this.USER_KEY, JSON.stringify(userData));
+  }
 }

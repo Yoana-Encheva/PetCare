@@ -1,19 +1,82 @@
 <div class="container">
-  <div class="profile">
-    <img src="./profile.png" alt="default user" />
-    <h3>User Info:</h3>
-    <div class="flex">
-      <p>Username:</p>
-      <p>Johny</p>
-    </div>
-    <div class="flex">
-      <p>Email:</p>
-      <p>john.com</p>
-    </div>
-    <div class="flex">
-      <p>Phone:</p>
-      <p>+359 885 888 888</p>
-    </div>
-    <button class="edit-button">Edit</button>
-  </div>
+  <mat-card class="card">
+    <img src="../../../assets/profile.png" alt="default user" width="80px" />
+    <mat-card-content>
+      <h2>Personal Information</h2>
+
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter your username</mat-label>
+
+          <input
+            formControlName="name"
+            matInput
+            name="name"
+            placeholder="Username"
+            type="text"
+          />
+
+          <mat-error *ngIf="form.get('name')?.errors?.['required']">
+            Username is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('name')?.errors?.['minlength']">
+            Username should be at least 5 characters long!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter your email</mat-label>
+
+          <input
+            formControlName="email"
+            matInput
+            name="email"
+            placeholder="john.doe@gmail.com"
+            type="email"
+          />
+
+          <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('email')?.errors?.['emailValidator']">
+            Email is invalid!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Password</mat-label>
+
+          <input
+            formControlName="password"
+            matInput
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+          />
+
+          <mat-error *ngIf="form.get('password')?.errors?.['required']">
+            Password is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('password')?.errors?.['minlength']">
+            Password should be at least 6 characters long!
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <mat-slide-toggle
+            [checked]="editMode"
+            name="edit"
+            (click)="toggleEdit()"
+          >
+            Enable edit mode
+          </mat-slide-toggle>
+
+          <button *ngIf="editMode" mat-flat-button color="accent">Save</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
