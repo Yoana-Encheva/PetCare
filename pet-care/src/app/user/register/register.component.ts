@@ -25,7 +25,6 @@ export class RegisterComponent {
   });
 
   get passGroup() {
-    // console.log(this.form.get('passGroup'));
     return this.form.get('passGroup');
   }
 

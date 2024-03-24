@@ -8,14 +8,13 @@
           <mat-label>Enter your email</mat-label>
 
           <input
+            #inputEmail="ngModel"
             matInput
             name="email"
-            type="email"
-            placeholder="pat@example.com"
-            required
-            placeholder="john.doe@gmail.com"
             ngModel
-            #inputEmail="ngModel"
+            placeholder="john.doe@gmail.com"
+            required
+            type="email"
             [appEmail]="['bg', 'com']"
           />
 
@@ -32,15 +31,14 @@
           <mat-label>Password</mat-label>
 
           <input
+            #inputPassword="ngModel"
             matInput
-            placeholder="Enter your password"
-            value=""
             minlength="6"
             name="password"
+            ngModel
+            placeholder="Enter your password"
             required
             type="password"
-            ngModel
-            #inputPassword="ngModel"
           />
 
           <mat-error *ngIf="inputPassword.errors?.['required']">
