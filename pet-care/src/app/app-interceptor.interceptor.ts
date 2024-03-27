@@ -25,6 +25,12 @@ class AppInterceptor implements HttpInterceptor {
       });
     }
 
+    if (request.url.startsWith('client')) {
+      request = request.clone({
+        url: request.url.replace('client', environment.apiClientUrl),
+      });
+    }
+
     return next.handle(request);
   }
 }

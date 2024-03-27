@@ -1,40 +1,50 @@
 import { Injectable } from '@angular/core';
-import { User } from '../types/user';
+import { User, UserDetails } from '../types/user';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user: User | undefined;
+  user: UserDetails | null;
   USER_KEY = '[user]';
 
   get isLogged(): boolean {
     return !!this.user;
   }
 
-  constructor() {
+  setUserData(userData: any) {
+    this.user = userData;
+  }
+
+  constructor(private http: HttpClient) {
     try {
       const userData = localStorage.getItem(this.USER_KEY) || '';
       this.user = JSON.parse(userData);
     } catch (err) {
-      this.user = undefined;
+      this.user = null;
     }
   }
 
-  login() {
-    this.user = {
-      objectId: '1233',
-      name: 'John',
-      email: 'test@abv.bg',
-      password: '123456',
-    };
+  login(email: string, password: string) {
+    return this.http.post('client/login', {
+      login: email,
+      password,
+    });
+  }
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  register(name: string, email: string, password: string) {
+    return this.http.post('client/register', {
+      name,
+      email,
+      password,
+    });
   }
 
   logout() {
-    this.user = undefined;
-    localStorage.removeItem(this.USER_KEY);
+    return this.http.get('client/logout', {
+      headers: { 'user-token': this.user?.['user-token'] || '' },
+    });
   }
 
   updateProfile(userData: User) {

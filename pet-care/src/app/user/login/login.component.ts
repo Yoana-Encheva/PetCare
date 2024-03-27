@@ -17,7 +17,18 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login();
-    this.router.navigate(['/home']);
+    const { email, password } = form.value;
+
+    this.userService.login(email, password).subscribe({
+      next: (userData) => {
+        this.userService.setUserData(userData);
+        localStorage.setItem('[user]', JSON.stringify(userData));
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        // this.isLoading = false;
+        console.log('Error: ', err);
+      },
+    });
   }
 }

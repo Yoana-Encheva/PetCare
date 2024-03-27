@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   editMode: boolean = false;
 
   userDetails: User = {
-    objectId: '',
     name: '',
     email: '',
     password: '',
@@ -37,19 +36,18 @@ export class ProfileComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
-    const { objectId, name, email, password } = this.userService.user!;
+    const { name, email } = this.userService.user!;
 
     this.userDetails = {
-      objectId,
       name,
       email,
-      password,
+      password: '',
     };
 
     this.form.setValue({
       name,
       email,
-      password,
+      password: '',
     });
   }
 

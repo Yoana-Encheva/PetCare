@@ -19,7 +19,17 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.userService.logout();
+    this.userService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('[user]');
+        this.userService.setUserData(null);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        // this.isLoading = false;
+        console.log('Error: ', err);
+      },
+    });
     this.router.navigate(['/home']);
   }
 }
