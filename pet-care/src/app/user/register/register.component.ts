@@ -52,7 +52,7 @@ export class RegisterComponent {
 
     this.userService.register(name!, email!, password!).subscribe({
       next: () => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/user/login']);
       },
       error: (err) => {
         // this.isLoading = false;

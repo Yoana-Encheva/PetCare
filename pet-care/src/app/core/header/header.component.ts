@@ -30,6 +30,5 @@ export class HeaderComponent {
         console.log('Error: ', err);
       },
     });
-    this.router.navigate(['/home']);
   }
 }
