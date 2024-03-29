@@ -9,7 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
 
-import { appInterceptorProvider } from './app-interceptor.interceptor';
+import { appInterceptorProvider } from './app.interceptor';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +18,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MainComponent, NotFoundComponent, AuthenticationComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    MainComponent,
+    NotFoundComponent,
+    AuthenticationComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
