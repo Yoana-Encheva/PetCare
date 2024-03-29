@@ -21,8 +21,7 @@ export class HeaderComponent {
   logout() {
     this.userService.logout().subscribe({
       next: () => {
-        localStorage.removeItem('[user]');
-        this.userService.setUserData(null);
+        localStorage.removeItem('[user-id]');
         this.router.navigate(['/home']);
       },
       error: (err) => {

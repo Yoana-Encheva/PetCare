@@ -17,8 +17,6 @@ class AppInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log(request);
-
     if (request.url.startsWith('api')) {
       request = request.clone({
         url: request.url.replace('api', environment.apiUrl),
@@ -28,6 +26,7 @@ class AppInterceptor implements HttpInterceptor {
     if (request.url.startsWith('client')) {
       request = request.clone({
         url: request.url.replace('client', environment.apiClientUrl),
+        withCredentials: true,
       });
     }
 

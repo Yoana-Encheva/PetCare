@@ -21,8 +21,7 @@ export class LoginComponent {
 
     this.userService.login(email, password).subscribe({
       next: (userData) => {
-        this.userService.setUserData(userData);
-        localStorage.setItem('[user]', JSON.stringify(userData));
+        localStorage.setItem('[user-id]', userData.objectId);
         this.router.navigate(['/home']);
       },
       error: (err) => {
