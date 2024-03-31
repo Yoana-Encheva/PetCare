@@ -60,7 +60,10 @@ export class UserService implements OnDestroy {
   }
 
   updateProfile(userData: User) {
-    localStorage.setItem('[user-id]', JSON.stringify(userData));
+    const userId = localStorage.getItem('[user-id]') || '';
+    return this.http
+      .put<UserDetails>(`api/users/${userId}`, userData)
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   ngOnDestroy(): void {

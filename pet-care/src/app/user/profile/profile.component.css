@@ -28,3 +28,14 @@ p {
 img {
   margin: 24px auto;
 }
+
+.spinner {
+  margin: 0 auto;
+}
+
+.error {
+  background-color: #fdb73e;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -10,12 +10,13 @@ import { emailValidator } from 'src/app/shared/utils/email-validator';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  loading: boolean = false;
+  errored: boolean = false;
   editMode: boolean = false;
 
   userDetails: User = {
     name: '',
     email: '',
-    password: '',
   };
 
   form = this.fb.group({
@@ -27,27 +28,38 @@ export class ProfileComponent implements OnInit {
       { value: '', disabled: !this.editMode },
       [Validators.required, emailValidator(['bg', 'com'])],
     ],
-    password: [
-      { value: '', disabled: !this.editMode },
-      [Validators.required, Validators.minLength(6)],
-    ],
   });
+
+  get hasData(): boolean {
+    return Boolean(this.userDetails.name && this.userDetails.email);
+  }
 
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
-    const { name, email } = this.userService.user!;
+    this.loading = true;
+    this.errored = false;
 
-    this.userDetails = {
-      name,
-      email,
-      password: '',
-    };
+    this.userService.getProfile().subscribe({
+      next: (userData) => {
+        this.loading = false;
 
-    this.form.setValue({
-      name,
-      email,
-      password: '',
+        const { name, email } = userData;
+
+        this.userDetails = {
+          name,
+          email,
+        };
+
+        this.form.setValue({
+          name,
+          email,
+        });
+      },
+      error: () => {
+        this.loading = false;
+        this.errored = true;
+      },
     });
   }
 
@@ -55,10 +67,20 @@ export class ProfileComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
     this.userDetails = { ...this.userDetails, ...this.form.value } as User;
-    this.userService.updateProfile(this.userDetails);
-    this.toggleEdit();
+    this.loading = true;
+    this.errored = false;
+
+    this.userService.updateProfile(this.userDetails).subscribe({
+      next: () => {
+        this.loading = false;
+        this.toggleEdit();
+      },
+      error: () => {
+        this.loading = false;
+        this.errored = true;
+      },
+    });
   }
 
   toggleEdit(): void {
@@ -69,12 +91,10 @@ export class ProfileComponent implements OnInit {
   enableFormControls(): void {
     this.form.get('name')?.enable();
     this.form.get('email')?.enable();
-    this.form.get('password')?.enable();
   }
 
   disableFormControls(): void {
     this.form.get('name')?.disable();
     this.form.get('email')?.disable();
-    this.form.get('password')?.disable();
   }
 }
