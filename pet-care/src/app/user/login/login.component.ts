@@ -10,6 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  loading: boolean = false;
+  errored: boolean = false;
+
   constructor(private userService: UserService, private router: Router) {}
 
   login(form: NgForm) {
@@ -17,16 +20,20 @@ export class LoginComponent {
       return;
     }
 
+    this.loading = true;
+
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe({
       next: (userData) => {
+        this.loading = false;
         localStorage.setItem('[user-id]', userData.objectId);
+
         this.router.navigate(['/home']);
       },
-      error: (err) => {
-        // this.isLoading = false;
-        console.log('Error: ', err);
+      error: () => {
+        this.loading = false;
+        this.errored = true;
       },
     });
   }

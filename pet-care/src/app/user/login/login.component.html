@@ -3,62 +3,72 @@
     <mat-card-content>
       <h2>Welcome to Pet Care Login</h2>
 
-      <form #form="ngForm" (ngSubmit)="login(form)">
-        <mat-form-field class="w-full" appearance="fill">
-          <mat-label>Enter your email</mat-label>
+      <mat-spinner *ngIf="loading" color="accent" class="spinner"></mat-spinner>
 
-          <input
-            #inputEmail="ngModel"
-            matInput
-            name="email"
-            ngModel
-            placeholder="john.doe@gmail.com"
-            required
-            type="email"
-            [appEmail]="['bg', 'com']"
-          />
+      <ng-container *ngIf="!loading">
+        <mat-card *ngIf="errored" class="error">
+          <mat-card-content>
+            Unsuccessful login - wrong username or password!
+          </mat-card-content>
+        </mat-card>
 
-          <mat-error *ngIf="inputEmail.errors?.['required']">
-            Email is required!
-          </mat-error>
+        <form #form="ngForm" (ngSubmit)="login(form)">
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Enter your email</mat-label>
 
-          <mat-error *ngIf="inputEmail.errors?.['emailValidator']">
-            Email is invalid!
-          </mat-error>
-        </mat-form-field>
+            <input
+              #inputEmail="ngModel"
+              matInput
+              name="email"
+              ngModel
+              placeholder="john.doe@gmail.com"
+              required
+              type="email"
+              [appEmail]="['bg', 'com']"
+            />
 
-        <mat-form-field class="w-full" appearance="fill">
-          <mat-label>Password</mat-label>
+            <mat-error *ngIf="inputEmail.errors?.['required']">
+              Email is required!
+            </mat-error>
 
-          <input
-            #inputPassword="ngModel"
-            matInput
-            minlength="6"
-            name="password"
-            ngModel
-            placeholder="Enter your password"
-            required
-            type="password"
-          />
+            <mat-error *ngIf="inputEmail.errors?.['emailValidator']">
+              Email is invalid!
+            </mat-error>
+          </mat-form-field>
 
-          <mat-error *ngIf="inputPassword.errors?.['required']">
-            Password is required!
-          </mat-error>
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Password</mat-label>
 
-          <mat-error *ngIf="inputPassword.errors?.['minlength']">
-            Password should be at least 6 characters long!
-          </mat-error>
-        </mat-form-field>
+            <input
+              #inputPassword="ngModel"
+              matInput
+              minlength="6"
+              name="password"
+              ngModel
+              placeholder="Enter your password"
+              required
+              type="password"
+            />
 
-        <div class="form-actions">
-          <p>
-            Don't have an account?
-            <a routerLink="/user/register">Register</a>
-          </p>
+            <mat-error *ngIf="inputPassword.errors?.['required']">
+              Password is required!
+            </mat-error>
 
-          <button mat-fab extended class="button">Login</button>
-        </div>
-      </form>
+            <mat-error *ngIf="inputPassword.errors?.['minlength']">
+              Password should be at least 6 characters long!
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-actions">
+            <p>
+              Don't have an account?
+              <a routerLink="/user/register">Register</a>
+            </p>
+
+            <button mat-fab extended class="button">Login</button>
+          </div>
+        </form>
+      </ng-container>
     </mat-card-content>
   </mat-card>
 </div>

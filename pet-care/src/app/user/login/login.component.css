@@ -27,3 +27,14 @@ p {
 .button {
   background-color: #027b9a;
 }
+
+.spinner {
+  margin: 0 auto;
+}
+
+.error {
+  background-color: #fdb73e;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+}
