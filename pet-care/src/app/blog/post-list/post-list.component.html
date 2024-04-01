@@ -1,6 +1,10 @@
 <div>
   <app-loader *ngIf="isLoading" />
-  <div *ngIf="!isLoading" class="posts-container">
-    <post-item *ngFor="let post of posts" [post]="post" class="post-item" />
+  <div *ngIf="!isLoading" class="container">
+    <h1 class="heading">All Posts</h1>
+
+    <div class="posts-container">
+      <post-item *ngFor="let post of posts" [post]="post" class="post-item" />
+    </div>
   </div>
 </div>

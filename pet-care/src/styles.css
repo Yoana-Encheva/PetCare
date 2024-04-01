@@ -9,12 +9,17 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .container {
   width: 90%;
   margin: auto;
   padding-bottom: 4.5em;
+}
+
+.text-sm {
+  font-size: 12px;
+  opacity: 0.8;
 }

@@ -1,23 +1,33 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar class="card-header-image"></div>
-    <mat-card-title>{{ post.title }}</mat-card-title>
-    <mat-card-subtitle>{{ post.category }}</mat-card-subtitle>
+    <mat-card-title>{{ post.title | slice : 20 }}</mat-card-title>
+    <mat-card-subtitle>{{
+      post.category || "Uncategorized"
+    }}</mat-card-subtitle>
   </mat-card-header>
-  <a [routerLink]="[post.objectId, 'details']">Details</a>
+
   <img
     mat-card-image
     src="https://material.angular.io/assets/img/examples/shiba2.jpg"
     alt="Photo of a Shiba Inu"
   />
-  <mat-card-content>
-    <p>
+
+  <mat-card-content class="card-content">
+    <p class="text-sm">Created: {{ post.created | displayDate }}</p>
+    <p class="post-content">
       {{ post.content | slice }}
     </p>
-    <p>Created: {{ post.created | displayDate }}</p>
   </mat-card-content>
+
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button
+      mat-button
+      color="accent"
+      class="button"
+      [routerLink]="[post.objectId, 'details']"
+    >
+      View
+    </button>
   </mat-card-actions>
 </mat-card>

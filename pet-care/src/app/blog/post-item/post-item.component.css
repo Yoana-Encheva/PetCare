@@ -7,3 +7,15 @@
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.button {
+  margin-left: auto;
+}
