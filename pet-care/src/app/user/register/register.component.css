@@ -19,6 +19,7 @@ p {
 
 .form-actions {
   margin-top: 24px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,4 +33,12 @@ p {
   margin-left: 15px;
   margin-top: -22px;
   font-size: 12px;
+}
+
+.error-alert {
+  background-color: #fdb73e;
+  color: #027b9a;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
 }

@@ -13,6 +13,9 @@ import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-va
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  loading: boolean = false;
+  errored: boolean = false;
+
   form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(['bg', 'com'])]],
@@ -48,15 +51,17 @@ export class RegisterComponent {
       return;
     }
 
+    this.loading = true;
     const { name, email, passGroup: { password } = {} } = this.form.value;
 
     this.userService.register(name!, email!, password!).subscribe({
       next: () => {
+        this.loading = false;
         this.router.navigate(['/user/login']);
       },
-      error: (err) => {
-        // this.isLoading = false;
-        console.log('Error: ', err);
+      error: () => {
+        this.loading = false;
+        this.errored = true;
       },
     });
   }

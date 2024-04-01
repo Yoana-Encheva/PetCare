@@ -3,6 +3,12 @@
     <mat-card-content>
       <h2>Create your account</h2>
 
+      <mat-card *ngIf="!loading && errored" class="error-alert">
+        <mat-card-content>
+          Unsuccessful registration - some of your data may be incorrect!
+        </mat-card-content>
+      </mat-card>
+
       <form [formGroup]="form" (ngSubmit)="register()">
         <mat-form-field class="w-full" appearance="fill">
           <mat-label>Enter your username</mat-label>
@@ -94,9 +100,19 @@
             <a routerLink="/user/login">Log In</a>
           </p>
 
-          <button mat-fab extended class="button">Register</button>
+          <button mat-fab extended class="button" [disabled]="loading">
+            Register
+          </button>
         </div>
       </form>
     </mat-card-content>
+
+    <mat-card-footer>
+      <mat-progress-bar
+        *ngIf="loading"
+        mode="indeterminate"
+        color="accent"
+      ></mat-progress-bar>
+    </mat-card-footer>
   </mat-card>
 </div>
