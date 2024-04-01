@@ -5,6 +5,6 @@ import { formatDate } from '@angular/common';
 })
 export class DisplayDatePipe implements PipeTransform {
   transform(date: number, ...args: unknown[]): unknown {
-    return formatDate(date, 'dd.MM.yy, h:mm a', 'en-US');
+    return date && formatDate(date, 'dd.MM.yy, h:mm a', 'en-US');
   }
 }

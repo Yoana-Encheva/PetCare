@@ -18,6 +18,10 @@ export class ApiService {
   }
 
   createPost(title: string, content: string) {
-    return this.http.post<Post>(`api/posts`, { title, content });
+    return this.http.post<Post>(`api/posts`, {
+      title,
+      content,
+      ownerId: localStorage.getItem('[user-id]' || null),
+    });
   }
 }

@@ -10,6 +10,7 @@ import { Post } from 'src/app/types/post';
 })
 export class PostDetailsComponent implements OnInit {
   post = {} as Post;
+  isOwner: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -21,6 +22,10 @@ export class PostDetailsComponent implements OnInit {
       const id = data['postId'];
       this.apiService.getPost(id).subscribe((post) => {
         this.post = post;
+
+        if (localStorage.getItem('[user-id]') == post.ownerId) {
+          this.isOwner = true;
+        }
         console.log(post);
       });
     });

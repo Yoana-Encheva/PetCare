@@ -1,68 +1,18 @@
-<div class="container">
-  <div class="theme-content">
-    <!-- theme-title  -->
-    <div class="theme-title">
-      <div class="theme-name-wrapper">
-        <div class="theme-name">
-          <h2>{{ post.title }}</h2>
-          <p>
-            Date: <time>{{ post.created }}</time>
-          </p>
-        </div>
-        <div class="subscribers">
-          <p>Subscribers: <span>456</span></p>
-          <!-- <button class="subscribe">Subscribe</button>
-                        <button class="unsubscribe">Unsubscribe</button> -->
-        </div>
-      </div>
-    </div>
-    <!-- comment  -->
-    <div class="comment">
-      <header class="header">
-        <p><span>David</span> posted on <time>2020-10-10 12:08:28</time></p>
-      </header>
-      <div class="comment-main">
-        <div class="userdetails">
-          <img src="../../../assets/profile.png" alt="avatar" />
-        </div>
-        <div class="post-content">
-          <p>
-            {{ post.content }}
-          </p>
-        </div>
-      </div>
-      <div class="footer">
-        <!-- <i class="fas fa-thumbs-up"></i>
-                    <i class="fas fa-thumbs-down"></i> -->
-        <p><span>5</span> likes</p>
-      </div>
-    </div>
-    <div class="comment">
-      <header class="header">
-        <p><span>Mark</span> posted on <time>2020-10-10 14:28:11</time></p>
-      </header>
-      <div class="comment-main">
-        <div class="userdetails">
-          <img src="./profile.png" alt="avatar" />
-        </div>
-        <div class="post-content">
-          <p>Lorem ipsum dolor sit amet consectetur</p>
-        </div>
-      </div>
-      <div class="footer">
-        <!-- <i class="fas fa-thumbs-up"></i>
-                    <i class="fas fa-thumbs-down"></i> -->
-        <p><span>3</span> likes</p>
-      </div>
-    </div>
-    <div class="answer-comment">
-      <p><span>currentUser</span> comment:</p>
-      <div class="answer">
-        <form>
-          <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
-          <button>Post</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-subtitle>{{ post.created | displayDate }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <img
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      alt="Post Image"
+      class="post-image"
+    />
+    <p>{{ post.content }}</p>
+  </mat-card-content>
+  <mat-card-actions class="card-actions" *ngIf="isOwner">
+    <button mat-button color="primary">Edit</button>
+    <button mat-button color="accent">Delete</button>
+  </mat-card-actions>
+</mat-card>
