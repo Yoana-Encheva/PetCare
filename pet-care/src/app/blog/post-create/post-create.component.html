@@ -3,6 +3,12 @@
     <mat-card-content>
       <h2>Create New Post</h2>
 
+      <mat-card *ngIf="!loading && errored" class="error">
+        <mat-card-content>
+          Opps, something went wrong. Please try again later.
+        </mat-card-content>
+      </mat-card>
+
       <form #form="ngForm" (ngSubmit)="createPost(form)">
         <mat-form-field class="w-full" appearance="fill">
           <mat-label>Enter post title</mat-label>
@@ -29,16 +35,14 @@
         <mat-form-field class="w-full" appearance="fill">
           <mat-label>Enter post content</mat-label>
 
-          <input
+          <textarea
             matInput
             name="content"
-            type="text"
             minlength="10"
             required
-            rows="8"
             ngModel
             #textareaContent="ngModel"
-          />
+          ></textarea>
 
           <mat-error *ngIf="textareaContent.errors?.['required']">
             Content is required!
@@ -49,11 +53,44 @@
           </mat-error>
         </mat-form-field>
 
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter image url</mat-label>
+
+          <input
+            matInput
+            name="imageUrl"
+            type="text"
+            ngModel
+            #inputImageUrl="ngModel"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Select category</mat-label>
+          <mat-select name="category" ngModel #selectCategory="ngModel">
+            <mat-option value="Breed">Breed</mat-option>
+            <mat-option value="Behavior">Behavior</mat-option>
+            <mat-option value="Food">Food</mat-option>
+            <mat-option value="General">General</mat-option>
+            <mat-option value="Tips">Tips</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <div class="form-actions">
           <button mat-fab extended class="button-secondary">Cancel</button>
-          <button mat-fab extended class="button-primary">Create</button>
+          <button mat-fab extended class="button-primary" [disabled]="loading">
+            Create
+          </button>
         </div>
       </form>
+
+      <mat-card-footer>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+          color="accent"
+        ></mat-progress-bar>
+      </mat-card-footer>
     </mat-card-content>
   </mat-card>
 </div>

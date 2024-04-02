@@ -10,6 +10,9 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent {
+  loading: boolean = false;
+  errored: boolean = false;
+
   constructor(private apiService: ApiService, private router: Router) {}
 
   createPost(form: NgForm) {
@@ -17,10 +20,19 @@ export class PostCreateComponent {
       return;
     }
 
-    const { title, content } = form.value;
+    this.loading = true;
 
-    this.apiService.createPost(title, content).subscribe((data) => {
-      this.router.navigate(['/blog', data.objectId, 'details']);
+    const { title, content, imageUrl, category } = form.value;
+
+    this.apiService.createPost(title, content, imageUrl, category).subscribe({
+      next: (data) => {
+        this.loading = false;
+        this.router.navigate(['/blog', data.objectId, 'details']);
+      },
+      error: () => {
+        this.loading = false;
+        this.errored = true;
+      },
     });
   }
 }

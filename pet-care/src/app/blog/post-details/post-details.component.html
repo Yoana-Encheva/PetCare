@@ -10,6 +10,7 @@
       <mat-card-title>{{ post.title }}</mat-card-title>
       <mat-card-subtitle>{{ post.created | displayDate }}</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content>
       <img
         src="https://material.angular.io/assets/img/examples/shiba2.jpg"
@@ -18,6 +19,7 @@
       />
       <p>{{ post.content }}</p>
     </mat-card-content>
+
     <mat-card-actions class="card-actions" *ngIf="isOwner">
       <button mat-button color="primary">Edit</button>
       <button

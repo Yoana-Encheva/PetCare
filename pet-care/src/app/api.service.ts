@@ -17,10 +17,17 @@ export class ApiService {
     return this.http.get<Post>(`api/posts/${id}`);
   }
 
-  createPost(title: string, content: string) {
+  createPost(
+    title: string,
+    content: string,
+    imageUrl: string,
+    category: string
+  ) {
     return this.http.post<Post>(`api/posts`, {
       title,
       content,
+      imageUrl: imageUrl || '',
+      category: category || 'General',
       ownerId: localStorage.getItem('[user-id]' || null),
     });
   }
