@@ -13,3 +13,12 @@
 .card-actions {
   margin-left: auto;
 }
+
+.error {
+  background-color: #fdb73e;
+  color: #027b9a;
+  margin: 24px auto;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 800px;
+}

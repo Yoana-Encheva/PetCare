@@ -24,4 +24,8 @@ export class ApiService {
       ownerId: localStorage.getItem('[user-id]' || null),
     });
   }
+
+  deletePost(id: string) {
+    return this.http.delete<Post>(`api/posts/${id}`);
+  }
 }

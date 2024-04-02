@@ -5,12 +5,27 @@
   justify-content: center;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: full;
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+
 .heading {
   text-align: center;
-  margin: 24px auto;
   font-size: 35px;
   color: #004658;
   font-family: "Times New Roman", Times, serif;
+  flex-grow: 1;
+  margin-right: -56px;
+}
+
+.button-container {
+  margin-left: auto;
+  margin-right: 16px;
 }
 
 .post-item {

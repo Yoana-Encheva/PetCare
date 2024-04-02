@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Post } from 'src/app/types/post';
 
@@ -10,24 +10,54 @@ import { Post } from 'src/app/types/post';
 })
 export class PostDetailsComponent implements OnInit {
   post = {} as Post;
+  loading: boolean = false;
+  errored: boolean = false;
   isOwner: boolean = false;
 
   constructor(
     private apiService: ApiService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe((data) => {
-      const id = data['postId'];
-      this.apiService.getPost(id).subscribe((post) => {
-        this.post = post;
+    this.loading = true;
 
-        if (localStorage.getItem('[user-id]') == post.ownerId) {
-          this.isOwner = true;
-        }
-        console.log(post);
+    this.activeRoute.params.subscribe((data) => {
+      this.apiService.getPost(data['postId']).subscribe({
+        next: (post) => {
+          this.post = post;
+
+          if (localStorage.getItem('[user-id]') == post.ownerId) {
+            this.isOwner = true;
+          }
+
+          this.loading = false;
+        },
+        error: () => {
+          this.loading = false;
+          this.router.navigate(['/404']);
+        },
       });
+    });
+  }
+
+  deletePost() {
+    if (!this.isOwner) {
+      return;
+    }
+
+    this.loading = true;
+
+    this.apiService.deletePost(this.post.objectId).subscribe({
+      next: () => {
+        this.loading = false;
+        this.router.navigate(['/blog']);
+      },
+      error: () => {
+        this.loading = false;
+        this.errored = true;
+      },
     });
   }
 }
