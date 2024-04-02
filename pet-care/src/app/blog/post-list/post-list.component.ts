@@ -11,6 +11,7 @@ import { UserService } from 'src/app/user/user.service';
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
   isLoading: boolean = true;
+  errored: boolean = false;
 
   constructor(private api: ApiService, private userService: UserService) {}
 
@@ -24,9 +25,9 @@ export class PostListComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
       },
-      error: (err) => {
+      error: () => {
         this.isLoading = false;
-        console.log('Error: ', err);
+        this.errored = true;
       },
     });
   }

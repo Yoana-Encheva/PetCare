@@ -17,8 +17,18 @@
       </div>
     </div>
 
-    <div class="posts-container">
-      <post-item *ngFor="let post of posts" [post]="post" class="post-item" />
+    <div *ngIf="errored" class="info-alert">
+      <p>Something went wrong. Please try again.</p>
     </div>
+
+    <ng-container *ngIf="!errored">
+      <div *ngIf="posts.length === 0" class="info-alert">
+        <p>No posts available. Start by creating a new post!</p>
+      </div>
+
+      <div class="posts-container" *ngIf="posts?.length">
+        <post-item *ngFor="let post of posts" [post]="post" class="post-item" />
+      </div>
+    </ng-container>
   </div>
 </div>

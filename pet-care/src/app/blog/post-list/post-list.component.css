@@ -28,6 +28,15 @@
   margin-right: 16px;
 }
 
+.info-alert {
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 30px;
+  color: #004658;
+  font-family: "Times New Roman", Times, serif;
+}
+
 .post-item {
   margin: 10px;
 }
