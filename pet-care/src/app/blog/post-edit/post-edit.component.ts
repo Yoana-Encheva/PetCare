@@ -15,7 +15,6 @@ export class PostEditComponent implements OnInit {
   post = {} as Post;
   loading: boolean = false;
   errored: boolean = false;
-  isOwner: boolean = false;
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(5)]],
@@ -39,8 +38,8 @@ export class PostEditComponent implements OnInit {
         next: (post) => {
           this.post = post;
 
-          if (localStorage.getItem('[user-id]') == post.ownerId) {
-            this.isOwner = true;
+          if (!(localStorage.getItem('[user-id]') == post.ownerId)) {
+            this.router.navigate(['/404']);
           }
 
           this.form.setValue({
