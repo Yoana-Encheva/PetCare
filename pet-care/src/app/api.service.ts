@@ -32,6 +32,10 @@ export class ApiService {
     });
   }
 
+  updatePost(postData: Post) {
+    return this.http.put<Post>(`api/posts/${postData.objectId}`, postData);
+  }
+
   deletePost(id: string) {
     return this.http.delete<Post>(`api/posts/${id}`);
   }

@@ -1,0 +1,44 @@
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+h2 {
+  color: #027b9a;
+  margin-bottom: 24px;
+}
+
+p {
+  margin: 0;
+  color: #027b9a;
+}
+
+.form-actions {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-primary {
+  background-color: #027b9a;
+}
+
+.button-secondary {
+  background-color: inherit;
+  color: #027b9a;
+  border: 1px solid #027b9a;
+}
+
+.error {
+  background-color: #fdb73e;
+  color: #027b9a;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -1,0 +1,92 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-content>
+      <h2>Edit Post</h2>
+
+      <mat-card *ngIf="!loading && errored" class="error">
+        <mat-card-content>
+          Oops, something went wrong. Please try again later.
+        </mat-card-content>
+      </mat-card>
+
+      <form [formGroup]="form" (ngSubmit)="updatePost()">
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter post title</mat-label>
+
+          <input formControlName="title" matInput name="title" type="text" />
+
+          <mat-error *ngIf="form.get('title')?.errors?.['required']">
+            Title is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('title')?.errors?.['minlength']">
+            Title should be at least 5 characters long.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter post content</mat-label>
+
+          <textarea
+            formControlName="content"
+            matInput
+            name="content"
+          ></textarea>
+
+          <mat-error *ngIf="form.get('content')?.errors?.['required']">
+            Content is required!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('content')?.errors?.['minlength']">
+            Content should be at least 10 characters long.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Enter image url</mat-label>
+
+          <input
+            formControlName="imageUrl"
+            matInput
+            name="imageUrl"
+            type="text"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Select category</mat-label>
+          <mat-select formControlName="category" name="category">
+            <mat-option value="Breed">Breed</mat-option>
+            <mat-option value="Behavior">Behavior</mat-option>
+            <mat-option value="Food">Food</mat-option>
+            <mat-option value="General">General</mat-option>
+            <mat-option value="Tips">Tips</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button
+            mat-fab
+            extended
+            class="button-secondary"
+            [disabled]="loading"
+            (click)="cancel(); $event.preventDefault()"
+          >
+            Cancel
+          </button>
+          <button mat-fab extended class="button-primary" [disabled]="loading">
+            Update
+          </button>
+        </div>
+      </form>
+
+      <mat-card-footer>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+          color="accent"
+        ></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card-content>
+  </mat-card>
+</div>

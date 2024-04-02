@@ -21,7 +21,14 @@
     </mat-card-content>
 
     <mat-card-actions class="card-actions" *ngIf="isOwner">
-      <button mat-button color="primary">Edit</button>
+      <button
+        mat-button
+        color="primary"
+        [disabled]="loading"
+        [routerLink]="['/blog', post.objectId, 'edit']"
+      >
+        Edit
+      </button>
       <button
         mat-button
         color="accent"

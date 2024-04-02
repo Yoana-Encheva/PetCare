@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +17,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PostListComponent } from './post-list/post-list.component';
     PostDetailsComponent,
     PostItemComponent,
     PostListComponent,
+    PostEditComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { PostListComponent } from './post-list/post-list.component';
     MatInputModule,
     MatSelectModule,
     MatProgressBarModule,
+    ReactiveFormsModule,
     SharedModule,
   ],
 })
