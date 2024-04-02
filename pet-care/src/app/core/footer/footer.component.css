@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
 }
+
 a {
   color: #fff;
   text-decoration: none;
 }
+
 .pg-footer {
   font-family: "Roboto", sans-serif;
 }
@@ -14,6 +16,7 @@ a {
   background-color: #004658;
   color: #fff;
 }
+
 .footer-wave-svg {
   background-color: transparent;
   display: block;
@@ -22,6 +25,7 @@ a {
   top: -1px;
   width: 100%;
 }
+
 .footer-wave-path {
   fill: #f2f2f2;
 }
@@ -51,6 +55,7 @@ a {
 .footer-logo-link {
   display: inline-block;
 }
+
 .footer-menu {
   margin-top: 30px;
 }

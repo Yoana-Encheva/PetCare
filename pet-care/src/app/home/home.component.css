@@ -1,45 +1,76 @@
-.welcome {
-  padding: 0.3em 0.5em;
-  border: 1px solid #999;
-  border-radius: 0.3em;
-  font-size: 0.8em;
-  margin-top: 1em;
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.welcome h3 {
-  background-color: #4ebced;
-  border-radius: 0.3em;
-  width: 100%;
-  padding: 0.3em 1em;
+.header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.welcome p {
-  padding: 1em;
-  border-bottom: 1px solid #999;
-  font-style: normal;
+.title {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.welcome a {
-  color: white;
-  text-decoration: none;
-  background-color: #4ebced;
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 0.3em;
-  padding: 0.5em 5.2em;
-  margin: 1em;
-}
-
-.welcome a:hover {
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.welcome ul {
+.button:hover {
+  background-color: #0056b3;
+}
+
+.recent-posts {
+  margin-top: 40px;
+}
+
+.post {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.post-content {
   display: flex;
-  justify-content: space-evenly;
-  padding: 0;
-  margin: 1em;
+  align-items: center;
 }
 
-.welcome li {
-  list-style: none;
+.post-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.post-description {
+  color: #666;
 }
