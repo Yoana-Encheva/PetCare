@@ -24,10 +24,6 @@ export class HeaderComponent {
         localStorage.removeItem('[user-id]');
         this.router.navigate(['/home']);
       },
-      error: (err) => {
-        // this.isLoading = false;
-        console.log('Error: ', err);
-      },
     });
   }
 }
