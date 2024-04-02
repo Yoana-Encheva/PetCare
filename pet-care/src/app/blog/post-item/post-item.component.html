@@ -9,8 +9,9 @@
 
   <img
     mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
+    [src]="post.imageUrl"
+    [alt]="'Photo of ' + post.title"
+    class="image"
   />
 
   <mat-card-content class="card-content">

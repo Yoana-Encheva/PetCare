@@ -11,10 +11,11 @@
       <mat-card-subtitle>{{ post.created | displayDate }}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="card-content">
       <img
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Post Image"
+        *ngIf="post.imageUrl"
+        [src]="post.imageUrl"
+        [alt]="'Photo of ' + post.title"
         class="post-image"
       />
       <p>{{ post.content }}</p>
