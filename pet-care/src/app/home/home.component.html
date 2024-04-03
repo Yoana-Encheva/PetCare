@@ -27,7 +27,7 @@
     <div class="post" *ngFor="let post of posts">
       <div class="post-content">
         <img
-          [src]="post.imageUrl"
+          [src]="post.imageUrl || 'https://via.placeholder.com/100'"
           [alt]="'Photo of animals and vets' + post.title"
         />
         <div>
