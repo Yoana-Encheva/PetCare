@@ -6,42 +6,39 @@
     </p>
   </div>
 
-  <button class="button">Add a New Post</button>
+  <div class="button-wrapper">
+    <button
+      mat-flat-button
+      color="accent"
+      class="button"
+      routerLink="/blog/create"
+      (click)="navigate()"
+    >
+      Add a New Post
+    </button>
+  </div>
 
-  <div class="recent-posts">
+  <div class="image-container">
+    <img src="../../assets/pet_care.jpg" alt="'Photo of" />
+  </div>
+
+  <div class="recent-posts" *ngIf="posts.length">
     <h2>Recent Posts</h2>
-    <div class="post">
+    <div class="post" *ngFor="let post of posts">
       <div class="post-content">
-        <img src="https://via.placeholder.com/100" alt="Post Image" />
+        <img
+          [src]="post.imageUrl"
+          [alt]="'Photo of animals and vets' + post.title"
+        />
         <div>
-          <h3 class="post-title">Tips for grooming your dog at home</h3>
+          <h3
+            class="post-title"
+            [routerLink]="['/blog', post.objectId, 'details']"
+          >
+            {{ post.title | slice : 80 }}
+          </h3>
           <p class="post-description">
-            Learn how to keep your dog looking and feeling great with these
-            grooming tips
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-content">
-        <img src="https://via.placeholder.com/100" alt="Post Image" />
-        <div>
-          <h3 class="post-title">The benefits of adopting an older cat</h3>
-          <p class="post-description">
-            Discover why senior cats make wonderful companions and how you can
-            give one a loving home
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-content">
-        <img src="https://via.placeholder.com/100" alt="Post Image" />
-        <div>
-          <h3 class="post-title">Keeping your rabbit cool in the summer</h3>
-          <p class="post-description">
-            Find out how to help your bunny beat the heat during the warmer
-            months
+            {{ post.content | slice }}
           </p>
         </div>
       </div>

@@ -13,6 +13,10 @@ export class ApiService {
     return this.http.get<Post[]>(`api/posts`);
   }
 
+  getLatestPosts() {
+    return this.http.get<Post[]>(`api/posts?sortBy=%60created%60%20desc`);
+  }
+
   getPost(id: string) {
     return this.http.get<Post>(`api/posts/${id}`);
   }

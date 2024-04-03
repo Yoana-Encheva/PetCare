@@ -5,6 +5,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #004658;
 }
 
 .header {
@@ -14,7 +15,6 @@
 
 .title {
   font-size: 36px;
-  color: #333;
   margin-bottom: 10px;
 }
 
@@ -24,22 +24,18 @@
   margin-bottom: 20px;
 }
 
-.button {
-  display: block;
-  width: 200px;
-  margin: 20px auto;
-  padding: 10px;
+.button-wrapper {
   text-align: center;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+}
+
+.button {
+  margin: 20px auto;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #004658;
 }
 
 .recent-posts {
@@ -69,8 +65,20 @@
 .post-title {
   font-size: 18px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .post-description {
   color: #666;
+}
+
+.image-container {
+  width: full;
+  margin: 16px auto;
+}
+
+.image-container img {
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: 5px;
 }
