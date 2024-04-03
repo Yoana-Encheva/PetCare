@@ -3,6 +3,10 @@
   margin: 50px auto;
 }
 
+.card {
+  min-height: 316px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -29,7 +33,7 @@ p {
 }
 
 .spinner {
-  margin: 0 auto;
+  margin: auto;
 }
 
 .error {

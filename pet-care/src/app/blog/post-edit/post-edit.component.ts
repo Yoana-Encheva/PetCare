@@ -36,11 +36,11 @@ export class PostEditComponent implements OnInit {
     this.activeRoute.params.subscribe((data) => {
       this.apiService.getPost(data['postId']).subscribe({
         next: (post) => {
-          this.post = post;
-
           if (!(localStorage.getItem('[user-id]') == post.ownerId)) {
             this.router.navigate(['/404']);
           }
+
+          this.post = post;
 
           this.form.setValue({
             title: post.title,

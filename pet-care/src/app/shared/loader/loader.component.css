@@ -8,7 +8,7 @@
     conic-gradient(from -46deg at bottom, currentColor 92deg, #0000 0) bottom;
   background-size: 100% 50%;
   background-repeat: no-repeat;
-  margin: 100px auto;
+  margin: 150px auto;
 }
 
 .loader:before {
